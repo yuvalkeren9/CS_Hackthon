@@ -1,13 +1,15 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'main.dart';
+import 'package:namer_app/Instructions.dart';
 
 class daily_schedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CoolHeaderWidget(title: "Daily Schecule", icon: Icons.calendar_view_day),
+        title: CoolHeaderWidgetEquip(title: "Daily Schecule", icon: Icons.calendar_view_day),
       ),
       body: 
       Column( 
@@ -19,7 +21,8 @@ class daily_schedule extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-                // Handle button press
+                globalNoNoBool = 1;
+                globalWidgetPage = Instructions();
               },
               child: Text('Click me'),
             )

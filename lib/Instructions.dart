@@ -5,7 +5,7 @@ class Instructions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(crossAxisCount: 2, children: [
-      LinkTextBox(text: 'Procedure 1', wd: page1()),
+      LinkTextBox(text: 'Procedure 1', wd: MyHomePage()),
       LinkTextBox(text: 'Procedure 2', wd: FavoritesPage())
     ]);
   }
@@ -66,58 +66,61 @@ class LinkTextBox extends StatelessWidget {
 }
 
 //////////////
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
+// class MyApp extends StatefulWidget {
+//   @override
+//   _MyAppState createState() => _MyAppState();
+// }
+//
+// class _MyAppState extends State<MyAppThatIsACtualyGptApp> {
+//   int _selectedIndex = 0;
+//
+//   static final List<Widget> _pages = [
+//     page1(),
+//     FavoritesPage(),
+//   ];
+//
+//   final List<LinkTextBox> _links = [
+//     LinkTextBox(text: 'Page 1', wd: _pages[0]),
+//     LinkTextBox(text: 'Page 2', wd: _pages[1]),
+//   ];
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Link Text Boxes')),
+//       body: Row(
+//         children: [
+//           NavigationRail(
+//             selectedIndex: _selectedIndex,
+//             onDestinationSelected: (int index) {
+//               setState(() {
+//                 _selectedIndex = index;
+//               });
+//             },
+//             labelType: NavigationRailLabelType.all,
+//             destinations: [
+//               NavigationRailDestination(
+//                 icon: Icon(Icons.home),
+//                 label: Text('Page 1'),
+//               ),
+//               NavigationRailDestination(
+//                 icon: Icon(Icons.settings),
+//                 label: Text('Page 2'),
+//               ),
+//             ],
+//           ),
+//           VerticalDivider(thickness: 1, width: 1),
+//           Expanded(
+//             child: Padding(
+//               padding: EdgeInsets.all(8),
+//               child: _pages[_selectedIndex],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class _MyAppState extends State<MyApp> {
-  int _selectedIndex = 0;
 
-  static final List<Widget> _pages = [
-    page1(),
-    FavoritesPage(),
-  ];
 
-  final List<LinkTextBox> _links = [
-    LinkTextBox(text: 'Page 1', wd: _pages[0]),
-    LinkTextBox(text: 'Page 2', wd: _pages[1]),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Link Text Boxes')),
-      body: Row(
-        children: [
-          NavigationRail(
-            selectedIndex: _selectedIndex,
-            onDestinationSelected: (int index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            labelType: NavigationRailLabelType.all,
-            destinations: [
-              NavigationRailDestination(
-                icon: Icon(Icons.home),
-                label: Text('Page 1'),
-              ),
-              NavigationRailDestination(
-                icon: Icon(Icons.settings),
-                label: Text('Page 2'),
-              ),
-            ],
-          ),
-          VerticalDivider(thickness: 1, width: 1),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: _pages[_selectedIndex],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
