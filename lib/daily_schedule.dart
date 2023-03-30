@@ -39,11 +39,11 @@ class OneDaySchedule extends StatefulWidget {
 
 class _OneDayScheduleState extends State<OneDaySchedule> {
   Map<String, List<String>> _schedule = {
-    '9:00 AM': ['Task 1', 'Task 2'],
-    '11:00 AM': ['Task 3'],
-    '2:00 PM': ['Task 4', 'Task 5'],
-    '4:00 PM': ['Task 6', 'Task 7', 'Task 8'],
-    '8:00 PM': ['Task 6', 'Task 7', 'Task 8'],
+    '9:00 AM': ['Replacing the feeding set', 'Washing the system'],
+    '11:00 AM': ['First dose of antibiotics'],
+    '2:00 PM': ['Replacing bandages', 'Checking blood pressure and pulse'],
+    '4:00 PM': ['Taking vitamins', 'Going to the pharmacy'],
+    '8:00 PM': ['Second dose of antibiotics', 'Preparing the new set for tommorow', 'Securing equipment for the night'],
   };
 
   Map<String, bool> _completedTasks = {};
