@@ -7,6 +7,13 @@ import 'package:video_player/video_player.dart';
 import 'anotherOne.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'Profile.dart';
+import 'package:table_calendar/table_calendar.dart';
+
+import 'dart:collection';
+import 'package:intl/intl.dart';
+
+
+
 
 
 int globalNoNoBool = 0;
@@ -130,6 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         page = pageEquipmentList();
         break;
+      case 4:
+        page = TableBasicsExample();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
         break;
@@ -157,8 +167,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         label: Text('Instructions'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.list_outlined),
+                        icon: Icon(Icons.playlist_add_check_outlined),
                         label: Text('Watchlist'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.calendar_month_outlined),
+                        label: Text('Calander'),
                       ),
                     ],
                     selectedIndex: selectedIndex,
@@ -822,4 +836,85 @@ class _VideoAppState extends State<VideoApp> {
     _controller.dispose();
   }
 }
+
+
+
+
+//calanader widget
+
+class TableBasicsExample extends StatefulWidget {
+  @override
+  _TableBasicsExampleState createState() => _TableBasicsExampleState();
+}
+
+class _TableBasicsExampleState extends State<TableBasicsExample> {
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
+  String proffesional = "No events today";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('TableCalendar - Basics'),
+      ),
+      body: Column(
+        children: [
+          TableCalendar(
+            firstDay: DateTime.utc(2010,10,16),
+            lastDay: DateTime.utc(2030,10,16),
+            focusedDay: _focusedDay,
+            calendarFormat: _calendarFormat,
+            selectedDayPredicate: (day) {
+              // Use `selectedDayPredicate` to determine which day is currently selected.
+              // If this returns true, then `day` will be marked as selected.
+
+              // Using `isSameDay` is recommended to disregard
+              // the time-part of compared DateTime objects.
+              return isSameDay(_selectedDay, day);
+            },
+            onDaySelected: (selectedDay, focusedDay) {
+              if (!isSameDay(_selectedDay, selectedDay)) {
+                // Call `setState()` when updating the selected day
+                setState(() {
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay;
+                  if (selectedDay == DateTime.utc(2023,04,16) ){
+                    print("This just might work!");
+                    proffesional = "Dietitian Appointment";
+                  }
+                  else if(selectedDay == DateTime.utc(2023,04,9)){
+                    proffesional = "Follow up at the hospital";
+                  }
+                  else if(selectedDay == DateTime.utc(2023,04,30)){
+                    proffesional = "Family Doctor at health maintenance organization";
+                  }
+                  else{
+                    proffesional = "No events today";
+                  }
+                });
+              }
+            },
+            onFormatChanged: (format) {
+              if (_calendarFormat != format) {
+                // Call `setState()` when updating calendar format
+                setState(() {
+                  _calendarFormat = format;
+                });
+              }
+            },
+            onPageChanged: (focusedDay) {
+              // No need to call `setState()` here
+              _focusedDay = focusedDay;
+            },
+          ),
+          ElevatedButton(onPressed: (){}, child: Text("$proffesional")),
+        ],
+      ),
+    );
+  }
+}
+
+
+//chat gpt calander
 
