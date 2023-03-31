@@ -19,13 +19,13 @@ class daily_schedule extends StatelessWidget {
             child: OneDaySchedule(),
           )
           ),
-          ElevatedButton(
-            onPressed: () {
-                globalNoNoBool = 1;
-                globalWidgetPage = Instructions();
-              },
-              child: Text('Click me'),
-            )
+          // ElevatedButton(
+          //   onPressed: () {
+          //       globalNoNoBool = 1;
+          //       globalWidgetPage = Instructions();
+          //     },
+          //     child: Text('Click me'),
+          //   )
         ],
       ),
     );

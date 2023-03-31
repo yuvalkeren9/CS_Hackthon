@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import 'anotherOne.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'Profile.dart';
 
 
 int globalNoNoBool = 0;
@@ -131,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
+        break;
     }
 
     return LayoutBuilder(
@@ -151,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         label: Text('Daily Schedule'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.accessible_forward_rounded),
+                        icon: Icon(Icons.school),
                         label: Text('Instructions'),
                       ),
                       NavigationRailDestination(
@@ -180,55 +182,78 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+class HomePageMeow extends StatefulWidget{
+  @override
+  _HomePageMeowState createState() => _HomePageMeowState();
+}
 
-class HomePageMeow extends StatelessWidget {
+class _HomePageMeowState extends State<HomePageMeow> {
+
+  int OmerAdam = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('My Medicine App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.healing, size: 80.0, color: Colors.blue),
-            SizedBox(height: 20.0),
-            Text(
-              'Welcome to My Medicine App',
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 40.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.local_hospital, size: 60.0, color: Colors.blue),
-                Icon(Icons.medication, size: 60.0, color: Colors.blue),
-                Icon(Icons.person_outline, size: 60.0, color: Colors.blue),
-              ],
-            ),
-            SizedBox(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Find Hospitals',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                Text(
-                  'My Medications',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                Text(
-                  'My Profile',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
-            ),
-          ],
+    if (OmerAdam == 0) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('My Medicine App'),
         ),
-      ),
-    );
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.healing, size: 80.0, color: Colors.blue),
+              SizedBox(height: 20.0),
+              Text(
+                'Back Home - Your Digital Case Manager',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 40.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.settings, size: 60.0, color: Colors.blue),
+                  Icon(Icons.medication, size: 60.0, color: Colors.blue),
+                  Icon(Icons.person_outline, size: 60.0, color: Colors.blue),
+                ],
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(onPressed: () {},
+                    child: Text(
+                      'Settings',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
+                  ElevatedButton(onPressed: () {},
+                    child: Text(
+                      'My Medications',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
+                  ElevatedButton(onPressed: () {
+                    print("Huff");
+                    setState(() {
+                      OmerAdam = 1;
+                    });
+                  },
+                    child: Text(
+                      'My Profile',
+                      style: TextStyle(fontSize: 16.0),
+                    ),)
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    else {
+      return
+          NursePage();
+    };
   }
 }
 
@@ -540,7 +565,7 @@ class CoolHeaderWidgetEquip extends StatelessWidget {
     return Container(
       height: 150,
       decoration: BoxDecoration(
-        color: Colors.brown,
+        color: Colors.lightBlueAccent,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
